@@ -1,5 +1,4 @@
-from lib.utils import compute_link_transformation, np
-
+from rtb_toolbox.utils import compute_link_transformation, np
 
 class Link:
     def __init__(

@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sp
 
-from lib.frame import z_rotation_matrix, translation_matrix, x_rotation_matrix
+from rtb_toolbox.frame import z_rotation_matrix, translation_matrix, x_rotation_matrix
 
 
 def near_zero(s, epsilon=1e-6):
