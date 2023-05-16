@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sp
 
-from rtb_toolbox.frame import z_rotation_matrix, translation_matrix, x_rotation_matrix
+from lib.frame import z_rotation_matrix, translation_matrix, x_rotation_matrix
 
 
 def near_zero(s, epsilon=1e-6):
@@ -131,11 +131,17 @@ def matrix_log6(T):
             p)], [[0, 0, 0, 0]]]
 
 
-def compute_link_transformation(dhp):
+def compute_link_transformation(dhp, offset=0, link_type='R'):
     rz = z_rotation_matrix(dhp[0])
     tz = translation_matrix(0, 0, dhp[1])
     tx = translation_matrix(dhp[2], 0, 0)
     rx = x_rotation_matrix(dhp[3])
+
+    if offset != 0:
+        if link_type == 'R':
+            rz @= z_rotation_matrix(offset)
+        else:
+            tz @= translation_matrix(0, 0, offset)
 
     return rz @ tz @ tx @ rx
 
