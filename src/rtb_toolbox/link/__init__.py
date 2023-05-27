@@ -44,7 +44,7 @@ class Link:
             self.update()
 
     def update(self):
-        self.transformation_matrix = compute_link_transformation(self.dhp, self.offset)
+        self.transformation_matrix = compute_link_transformation(self.dhp, self.offset, self.link_type)
 
     def get_transformation_matrix(self):
         return self.transformation_matrix
