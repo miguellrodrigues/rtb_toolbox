@@ -1,5 +1,7 @@
-from rtb_toolbox.frame import Frame
+from rtb_toolbox.robots.SCARA import scara_fk
+import sympy as sp
 
-f = Frame(0, 0, 0)
 
-print(f)
+sp.pprint(
+    scara_fk.get_transformation(2,3)
+)
