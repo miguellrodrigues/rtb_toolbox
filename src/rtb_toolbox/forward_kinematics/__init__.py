@@ -34,6 +34,8 @@ class ForwardKinematic:
                 mass=m,
                 transformation_matrix=transformation,
                 inertia_tensor=I,
+                link_type=self.links[i - 1].link_type,
+                offset=self.links[i - 1].offset,
             )
 
         self.ee_transformation_matrix = self.get_transformation(0, self.len_links)

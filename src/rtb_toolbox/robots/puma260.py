@@ -3,9 +3,6 @@ import sympy as sp
 
 from rtb_toolbox.forward_kinematics import ForwardKinematic
 from rtb_toolbox.link import Link
-from rtb_toolbox.utils import compute_homogeneous_transformation
-
-np.set_printoptions(suppress=True, precision=5)
 
 q1, q2, q3, q4, q5, q6 = sp.symbols('q_1 q_2 q_3 q_4 q_5 q_6')
 d1, d2 = sp.symbols('d_1 d_2')

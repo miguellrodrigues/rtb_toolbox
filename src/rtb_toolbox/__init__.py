@@ -5,3 +5,4 @@ from rtb_toolbox.frame import *
 from rtb_toolbox.link import *
 from rtb_toolbox.trajectory import *
 from rtb_toolbox.utils import *
+from rtb_toolbox.robots import *
