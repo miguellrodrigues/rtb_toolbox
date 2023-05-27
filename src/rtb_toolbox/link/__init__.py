@@ -17,6 +17,7 @@ class Link:
         self.inertia_tensor = inertia_tensor
         self.limits = limits
         self.link_type = link_type
+        self.offset = offset
 
         if limits is None:
             self.limits = [-np.pi, np.pi]

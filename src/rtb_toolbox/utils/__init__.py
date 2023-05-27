@@ -132,16 +132,20 @@ def matrix_log6(T):
 
 
 def compute_link_transformation(dhp, offset=0, link_type='R'):
-    rz = z_rotation_matrix(dhp[0])
-    tz = translation_matrix(0, 0, dhp[1])
-    tx = translation_matrix(dhp[2], 0, 0)
-    rx = x_rotation_matrix(dhp[3])
+    theta = dhp[0]
+    d     = dhp[1]
+    a     = dhp[2]
+    alpha = dhp[3]
 
-    if offset != 0:
-        if link_type == 'R':
-            rz @= z_rotation_matrix(offset)
-        else:
-            tz @= translation_matrix(0, 0, offset)
+    if link_type == 'R':
+        theta += offset
+    elif link_type == 'P':
+        d += offset
+
+    rz = z_rotation_matrix(theta)
+    tz = translation_matrix(0, 0, d)
+    tx = translation_matrix(a, 0, 0)
+    rx = x_rotation_matrix(alpha)
 
     return rz @ tz @ tx @ rx
 
