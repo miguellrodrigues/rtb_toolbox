@@ -41,7 +41,7 @@ class Link:
         self.transformation_matrix = transformation_matrix
 
         if transformation_matrix is None:
-            self.transformation_matrix = compute_link_transformation(dhp)
+            self.update()
 
     def update(self):
         self.transformation_matrix = compute_link_transformation(self.dhp, self.offset)
