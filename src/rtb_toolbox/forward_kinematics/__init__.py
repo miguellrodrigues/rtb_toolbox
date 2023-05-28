@@ -8,14 +8,19 @@ from rtb_toolbox.utils import compute_homogeneous_transformation
 class ForwardKinematic:
     def __init__(self,
                  links,
+                 virtual_links
         ):
 
         self.links = links
         self.len_links = len(self.links)
+        self.virtual_links = virtual_links
 
         self.generalized_coordinates = [self.links[i].generalized_coordinate for i in range(self.len_links)]
-
         self.links_zero_i = np.empty(self.len_links, dtype=Link)
+
+        if len(self.virtual_links) == 2:
+            self.links[0]  = self.virtual_links[0]@self.links[0]
+            self.links[-1] = self.links       [-1]@self.virtual_links[1]
 
         for i in range(1, self.len_links + 1):
             m = sp.Symbol(f'm_{i}')
