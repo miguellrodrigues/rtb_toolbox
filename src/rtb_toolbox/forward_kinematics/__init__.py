@@ -16,14 +16,14 @@ class ForwardKinematic:
         self.generalized_coordinates = [self.links[i].generalized_coordinate for i in range(self.len_links)]
         self.links_zero_i = np.empty(self.len_links, dtype=Link)
 
-        I = sp.Matrix([
-            [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
-            [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
-            [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
-        ])  # I = R @ I @ R.T
-
         for i in range(1, self.len_links + 1):
             m = sp.Symbol(f'm_{i}')
+
+            I = sp.Matrix([
+                [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
+                [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
+                [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
+            ])  # I = R @ I @ R.T
 
             transformation = self.get_transformation(0, i)
            
