@@ -74,6 +74,7 @@ def evolutive_ik(
     problem = InverseKinematicProblem(
         desired_pose=desired_pose,
         fk=fk,
+        n_var=len(initial_guess),
     )
 
     if algorithm is None:
