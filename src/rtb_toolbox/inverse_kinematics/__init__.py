@@ -95,10 +95,9 @@ def evolutive_ik(
     )
 
     f = res.F.min()
-    theta_i = res.X
-    success = f < 1e-5
+    optimal_theta = res.X
 
-    return theta_i, desired_pose, success, f
+    return optimal_theta, f
 
 
 def position_ik(
@@ -141,7 +140,7 @@ def position_ik(
     optimal_theta = res.x
     f = res.fun
 
-    return optimal_theta, desired_position, f
+    return optimal_theta, f
 
 
 def full_ik(
@@ -193,4 +192,4 @@ def full_ik(
     optimal_theta = res.x
     f = res.fun
 
-    return optimal_theta, desired_pose, f
+    return optimal_theta, f
