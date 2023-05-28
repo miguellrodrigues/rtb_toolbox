@@ -100,7 +100,7 @@ def evolutive_ik(
     return theta_i, desired_pose, success, f
 
 
-def ik_position(
+def position_ik(
         desired_position=None,
         fk: ForwardKinematic = None,
         initial_guess=None,
@@ -156,7 +156,7 @@ def ik_position(
     return theta_i, desired_position, not error
 
 
-def ik(
+def full_ik(
         desired_transformation=None,
         fk: ForwardKinematic = None,
         initial_guess=None,
@@ -167,9 +167,9 @@ def ik(
         verbose=False,
         only_position=False,
         normalize=True):
-    # finding the thetas only for the position
+
     if only_position:
-        return ik_position(
+        return position_ik(
             desired_position=desired_transformation[:3],
             fk=fk,
             initial_guess=initial_guess,
@@ -221,37 +221,4 @@ def ik(
         if verbose:
             print(f'Iteration {i}, s = {s}')
 
-    success_de = False
-
-    if error:
-        theta_i, desired_pose, success_de = evolutive_ik(
-            desired_transformation=desired_transformation,
-            fk=fk,
-            initial_guess=initial_guess,
-            max_iterations=max_iterations,
-            verbose=verbose,
-        )
-
-        if not success_de:
-            theta_i, desired_pose, success_pose = ik_position(
-                desired_position=desired_transformation[:3],
-                fk=fk,
-                f_tolerance=epsilon_vb,
-                max_iterations=max_iterations,
-                lmbd=lmbd,
-                verbose=verbose
-            )
-
-    if normalize and not success_de:
-        for i in range(fk.len_links):
-            link_limits = fk.links[i].limits
-
-            theta = normalize_angle_between_limits(
-                theta_i[i],
-                link_limits[0],
-                link_limits[1]
-            )
-
-            theta_i[i] = theta
-
-    return theta_i, desired_pose, 'Full' if not error else 'Full - Evolutive' if success_de else 'Only Position' if success_pose else 'Failed'
+    return theta_i, desired_pose, np.linalg.norm(s)
