@@ -59,7 +59,7 @@ def evolutive_ik(
         algorithm=None,
 ):
     if initial_guess is None:
-        initial_guess = np.random.rand(6)
+        initial_guess = np.random.rand(fk.len_links)
 
     desired_rotation = x_y_z_rotation_matrix(desired_transformation[3], desired_transformation[4],
                                              desired_transformation[5])
