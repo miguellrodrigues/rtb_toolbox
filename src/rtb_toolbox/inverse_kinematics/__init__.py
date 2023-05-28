@@ -72,7 +72,6 @@ def evolutive_ik(
     problem = InverseKinematicProblem(
         desired_pose=desired_pose,
         fk=fk,
-        n_var=len(initial_guess),
     )
 
     if algorithm is None:
@@ -94,10 +93,11 @@ def evolutive_ik(
         save_history=False,
     )
 
+    f = res.F.min()
     theta_i = res.X
-    success = res.F.min() < 1e-5
+    success = f < 1e-5
 
-    return theta_i, desired_pose, success
+    return theta_i, desired_pose, success, f
 
 
 def ik_position(
@@ -141,9 +141,6 @@ def ik_position(
 
     error = F > f_tolerance
 
-    # Use theta_i + fk.offset in external applications
-    # For calculations using this lib, use theta_i with the offset
-
     if normalize:
         for i in range(fk.len_links):
             link_limits = fk.links[i].limits
@@ -186,8 +183,6 @@ def ik(
     # rx, ry, rz: orientation of the end effector
     # returns: the joint angles
 
-    # The end effector z-axis must be in the same direction and sign as the z-axis of the base frame z-axis
-
     if initial_guess is None:
         initial_guess = initial_guess = np.random.rand(6)
 
@@ -225,9 +220,6 @@ def ik(
 
         if verbose:
             print(f'Iteration {i}, s = {s}')
-
-    # Use theta_i + fk.offset in external applications
-    # For calculations using this lib, use theta_i with the offset
 
     success_de = False
 
