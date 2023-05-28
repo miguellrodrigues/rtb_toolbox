@@ -6,7 +6,7 @@ from pymoo.optimize import minimize
 from pymoo.termination.default import MaximumGenerationTermination
 
 from rtb_toolbox.forward_kinematics import ForwardKinematic
-from rtb_toolbox.frame import x_y_z_rotation_matrix, translation_matrix
+from rtb_toolbox.frame import xyz_rotation_matrix, translation_matrix
 from rtb_toolbox.utils import matrix_log6, inverse_transformation, se3_to_vec, normalize_angle_between_limits
 
 
@@ -61,7 +61,7 @@ def evolutive_ik(
     if initial_guess is None:
         initial_guess = np.random.rand(fk.len_links)
 
-    desired_rotation = x_y_z_rotation_matrix(desired_transformation[3], desired_transformation[4],
+    desired_rotation = xyz_rotation_matrix(desired_transformation[3], desired_transformation[4],
                                              desired_transformation[5])
 
     desired_pose = sp.matrix2numpy(translation_matrix(desired_transformation[0], desired_transformation[1],
@@ -193,7 +193,7 @@ def ik(
     if initial_guess is None:
         initial_guess = initial_guess = np.random.rand(6)
 
-    desired_rotation = x_y_z_rotation_matrix(desired_transformation[3], desired_transformation[4],
+    desired_rotation = xyz_rotation_matrix(desired_transformation[3], desired_transformation[4],
                                              desired_transformation[5])
 
     desired_pose = sp.matrix2numpy(translation_matrix(desired_transformation[0], desired_transformation[1],
