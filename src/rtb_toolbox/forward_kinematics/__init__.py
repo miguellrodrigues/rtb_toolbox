@@ -94,13 +94,13 @@ class ForwardKinematic:
 
         j = sp.zeros(6, self.len_links)
 
-        # J_vi = Z_i-1 x (P - pi-1)
-        # J_wi = z_i-1
-
         P = htm[:3, 3]
 
         p_i = sp.zeros(3, 1)
         z_i = sp.Matrix([0, 0, 1])
+
+        if self.links[0].link_type == 'P':
+            z_i = sp.zeros(3, 1)
 
         for i in range(self.len_links):
             p_diff = (P - p_i)

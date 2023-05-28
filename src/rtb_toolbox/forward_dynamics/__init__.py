@@ -56,7 +56,6 @@ class ForwardDynamics:
         return D, C, G, taus
 
     def get_inertia_matrix_and_potential_energy(self):
-        # translational_kinetic_energy = 0
         potential_energy = sp.zeros(1, 1)
         D = sp.zeros(self.len_q, self.len_q)
         G = sp.Matrix([0, -g, 0])

@@ -6,10 +6,10 @@ class Trajectory:
         self.restrictions = restrictions
         self.d_time = d_time
 
-        self.temporal_matrix = self.compute_temporal_matrix()
+        self.temporal_matrix = self.compute_m()
         self.coefficients = np.linalg.inv(self.temporal_matrix) @ self.restrictions
 
-    def compute_temporal_matrix(self):
+    def compute_m(self):
         m = np.array([
             [1, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0],
