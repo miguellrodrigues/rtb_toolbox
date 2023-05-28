@@ -15,13 +15,11 @@ class InverseKinematicProblem(Problem):
             self,
             desired_pose=None,
             fk: ForwardKinematic = None,
-            n_var=6,
-            n_obj=1,
     ):
         lb = [fk.links[i].limits[0] for i in range(fk.len_links)]
         ub = [fk.links[i].limits[1] for i in range(fk.len_links)]
 
-        super().__init__(n_var=n_var, n_obj=n_obj, n_constr=0, xl=lb, xu=ub)
+        super().__init__(n_var=fk.len_links, n_obj=1, n_constr=0, xl=lb, xu=ub)
 
         self.desired_pose = desired_pose
         self.fk = fk
@@ -85,7 +83,7 @@ def evolutive_ik(
             bipop=True,
             sigma=1,
             tolfun=1e-8,
-            tolx=1e-8
+            tolx=1e-8,
         )
 
     res = minimize(
@@ -97,7 +95,7 @@ def evolutive_ik(
     )
 
     theta_i = res.X
-    success = res.F.min() < 1e-7
+    success = res.F.min() < 1e-5
 
     return theta_i, desired_pose, success
 
