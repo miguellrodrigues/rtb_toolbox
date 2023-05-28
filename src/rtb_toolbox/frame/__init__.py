@@ -31,7 +31,7 @@ def z_rotation_matrix(roll):
                       [0, 0, 0, 1]])
 
 
-def x_y_z_rotation_matrix(yaw, pitch, roll):
+def xyz_rotation_matrix(yaw, pitch, roll):
     """
     Rotation matrix around the x, y and z axis
     """
@@ -50,6 +50,10 @@ def zyz(phi, theta, psi):
     return z_rotation_matrix(phi) @ y_rotation_matrix(theta) @ z_rotation_matrix(psi)
 
 
+def transformation_matrix(dx, dy, dz, roll, pitch, yaw):
+    return translation_matrix(dx, dy, dz) @ xyz_rotation_matrix(roll, pitch, yaw)
+
+
 def translation_matrix(dx, dy, dz):
     return sp.Matrix([
         [1, 0, 0, dx],
@@ -61,7 +65,7 @@ def translation_matrix(dx, dy, dz):
 class Frame:
     def __init__(self, x, y, z, yaw=0, pitch=0, roll=0):
         self.position = translation_matrix(x, y, z)
-        self.orientation = x_y_z_rotation_matrix(yaw, pitch, roll)
+        self.orientation = xyz_rotation_matrix(yaw, pitch, roll)
 
     def translate(self, dx, dy, dz):
         self.position = translation_matrix(dx, dy, dz) @ self.position
@@ -69,7 +73,7 @@ class Frame:
         return self.position
 
     def rotate(self, yaw, pitch, roll):
-        self.orientation = x_y_z_rotation_matrix(yaw, pitch, roll) @ self.orientation
+        self.orientation = xyz_rotation_matrix(yaw, pitch, roll) @ self.orientation
 
     def rotate_around_arbitrary_vector(self, theta, v):
         self.orientation = arbitrary_vector_rotation_matrix(theta, v) @ self.orientation

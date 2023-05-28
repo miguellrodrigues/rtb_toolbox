@@ -10,7 +10,8 @@ class Link:
             transformation_matrix=None,
             inertia_tensor=None,
             limits=None,
-            link_type='R'
+            link_type='R',
+            v=None
     ):
         self.dhp = dhp
         self.generalized_coordinate = generalized_coordinate
@@ -18,6 +19,7 @@ class Link:
         self.limits = limits
         self.link_type = link_type
         self.offset = offset
+        self.v = v
 
         if limits is None:
             self.limits = [-np.pi, np.pi]
@@ -44,7 +46,12 @@ class Link:
             self.update()
 
     def update(self):
-        self.transformation_matrix = compute_link_transformation(self.dhp, self.offset, self.link_type)
+        tm = compute_link_transformation(self.dhp, self.offset, self.link_type)
+
+        if self.v != None:
+            tm = self.v@tm
+
+        self.transformation_matrix = tm
 
     def get_transformation_matrix(self):
         return self.transformation_matrix
