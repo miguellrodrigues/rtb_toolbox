@@ -7,8 +7,8 @@ from pymoo.termination.default import MaximumGenerationTermination
 
 from rtb_toolbox.forward_kinematics import ForwardKinematic
 from rtb_toolbox.frame import translation_matrix, zyz
-from rtb_toolbox.utils import matrix_log6, inverse_transformation, se3_to_vec, normalize_angle_between_limits
-from scipy.optimize import minimize_scp
+from rtb_toolbox.utils import matrix_log6, inverse_transformation, se3_to_vec
+from scipy.optimize import minimize as minimize_scp
 
 
 class InverseKinematicProblem(Problem):
