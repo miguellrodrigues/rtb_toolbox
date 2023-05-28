@@ -79,9 +79,7 @@ def evolutive_ik(
         from pymoo.algorithms.soo.nonconvex.cmaes import CMAES
 
         algorithm = CMAES(
-            restarts=2,
-            bipop=True,
-            sigma=1,
+            sigma=.5,
             tolfun=1e-8,
             tolx=1e-8,
         )
