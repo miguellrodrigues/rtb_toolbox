@@ -6,9 +6,9 @@ from pymoo.optimize import minimize
 from pymoo.termination.default import MaximumGenerationTermination
 
 from rtb_toolbox.forward_kinematics import ForwardKinematic
-from rtb_toolbox.frame import xyz_rotation_matrix, translation_matrix, zyz
+from rtb_toolbox.frame import translation_matrix, zyz
 from rtb_toolbox.utils import matrix_log6, inverse_transformation, se3_to_vec, normalize_angle_between_limits
-from scipy.optimize import minimize
+from scipy.optimize import minimize_scp
 
 
 class InverseKinematicProblem(Problem):
@@ -127,7 +127,7 @@ def position_ik(
 
         return F
     
-    res = minimize(
+    res = minimize_scp(
         cost,
         theta_i,
         options={
@@ -179,7 +179,7 @@ def full_ik(
 
         return np.linalg.norm(s)
 
-    res = minimize(
+    res = minimize_scp(
         cost,
         theta_i,
         options={
