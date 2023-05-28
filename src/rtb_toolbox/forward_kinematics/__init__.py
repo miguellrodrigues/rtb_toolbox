@@ -16,25 +16,24 @@ class ForwardKinematic:
         self.generalized_coordinates = [self.links[i].generalized_coordinate for i in range(self.len_links)]
         self.links_zero_i = np.empty(self.len_links, dtype=Link)
 
+        I = sp.Matrix([
+            [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
+            [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
+            [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
+        ])  # I = R @ I @ R.T
+
         for i in range(1, self.len_links + 1):
             m = sp.Symbol(f'm_{i}')
 
-            I = sp.Matrix([
-                [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
-                [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
-                [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
-            ])
-
             transformation = self.get_transformation(0, i)
-            # I = R @ I @ R.T
-
+           
             self.links_zero_i[i - 1] = Link(
-                generalized_coordinate=self.links[i - 1].dhp[0],
-                mass=m,
-                transformation_matrix=transformation,
-                inertia_tensor=I,
-                link_type=self.links[i - 1].link_type,
-                offset=self.links[i - 1].offset,
+                dhp                           = self.links[i - 1].dhp,
+                mass                          = m,
+                transformation_matrix         = transformation,
+                inertia_tensor                = I,
+                link_type                     = self.links[i - 1].link_type,
+                offset                        = self.links[i - 1].offset,
             )
 
         self.ee_transformation_matrix = self.get_transformation(0, self.len_links)
