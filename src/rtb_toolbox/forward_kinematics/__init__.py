@@ -18,22 +18,32 @@ class ForwardKinematic:
 
         for i in range(1, self.len_links + 1):
             m = sp.Symbol(f'm_{i}')
-
-            I = sp.Matrix([
-                [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
-                [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
-                [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
-            ])  # I = R @ I @ R.T
-
             transformation = self.get_transformation(0, i)
            
+            link_im = self.links[i - 1]
+           
+            I_tensor = link_im.inertia_tensor
+
+            if I_tensor == 0:
+                I = sp.Matrix([
+                    [sp.Symbol(f'I_{i}(xx)'), sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(xz)')],
+                    [sp.Symbol(f'I_{i}(xy)'), sp.Symbol(f'I_{i}(yy)'), sp.Symbol(f'I_{i}(yz)')],
+                    [sp.Symbol(f'I_{i}(xz)'), sp.Symbol(f'I_{i}(yz)'), sp.Symbol(f'I_{i}(zz)')],
+                ]) 
+                
+                R = transformation[:3, :3]
+                I_tensor = R@I@R.T
+            
+            if link_im.link_type == 'P':
+                I_tensor = np.zeros((3, 3))
+           
             self.links_zero_i[i - 1] = Link(
-                dhp                           = self.links[i - 1].dhp,
+                dhp                           = link_im.dhp,
                 mass                          = m,
                 transformation_matrix         = transformation,
-                inertia_tensor                = I,
-                link_type                     = self.links[i - 1].link_type,
-                offset                        = self.links[i - 1].offset,
+                inertia_tensor                = I_tensor,
+                link_type                     = link_im.link_type,
+                offset                        = link_im.offset,
             )
 
         self.ee_transformation_matrix = self.get_transformation(0, self.len_links)
