@@ -62,7 +62,7 @@ class ForwardDynamics:
 		
 		for i in range(len(self.links)):
 			m = self.links[i].mass
-			I = self.links[i].inertia_tensor
+			i_tensor = self.links[i].inertia_tensor
 			
 			Jvi = sp.zeros(3, len(self.q))
 			Jwi = sp.zeros(3, len(self.q))
@@ -75,7 +75,7 @@ class ForwardDynamics:
 			
 			Jwi[:, :i + 1] = self.w[:, :i + 1]
 			
-			D += (m * Jvi.T @ Jvi) + (Jwi.T @ I @ Jwi)
+			D += (m * Jvi.T @ Jvi) + (Jwi.T @ i_tensor @ Jwi)
 			potential_energy += m * G.T @ r
 		
 		return D, potential_energy[0]

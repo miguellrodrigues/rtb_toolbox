@@ -26,16 +26,15 @@ class Link:
 		self.link_type = link_type
 		self.offset = offset
 		self.v = v
+		self.transformation_matrix = transformation_matrix
 		
 		self.generalized_coordinate = dhp[0] if link_type == 'R' else dhp[1]
 		
 		self.mass = mass
-		self.transformation_matrix = transformation_matrix
 		
-		if transformation_matrix is None:
-			self.update()
+		self.compute_transformation_matrix()
 	
-	def update(self):
+	def compute_transformation_matrix(self):
 		tm = compute_link_transformation(self.dhp, self.offset, self.link_type)
 		
 		if self.v is not None:
