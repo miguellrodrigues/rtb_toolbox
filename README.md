@@ -65,7 +65,7 @@ thetas, _, success = ik_position(
 ```
 
 Output example of the inverse kinematics of position:
-![position ik](images/partial_ik.png)
+![position ik](rtb_toolbox/images/partial_ik.png)
 
 ### Inverse Kinematics of Position and Orientation
 
@@ -96,7 +96,7 @@ thetas, _, success = ik(
 ```
 
 Output example for the inverse kinematics of position and orientation
-![position ik](images/full_ik.png)
+![position ik](rtb_toolbox/images/full_ik.png)
 
 ## Forward Dynamics
 
@@ -133,5 +133,5 @@ for eq in fd.equations:
 ```
 
 Example of forward dynamic equations of an RR planar robot
-![tau 1](images/tau1.png)
-![tau 2](images/tau2.png)
+![tau 1](rtb_toolbox/images/tau1.png)
+![tau 2](rtb_toolbox/images/tau2.png)

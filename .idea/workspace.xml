@@ -8,10 +8,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b81717fd-8e08-4c17-a7c2-dd99463fcaaf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/rtb_toolbox/forward_kinematics/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rtb_toolbox/frame/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rtb_toolbox/inverse_kinematics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rtb_toolbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rtb_toolbox.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/inverse_kinematics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rtb_toolbox/inverse_kinematics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/robots/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/forward_dynamics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/forward_dynamics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/forward_kinematics/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/frame/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/images/full_ik.png" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/images/full_ik.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/images/partial_ik.png" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/images/partial_ik.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/images/tau1.png" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/images/tau1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/images/tau2.png" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/images/tau2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/images/trajectories.png" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/images/trajectories.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/inverse_kinematics/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/link/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/link/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/robots/SCARA.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/robots/SCARA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/robots/comau.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/robots/comau.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/robots/puma260.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/robots/puma260.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/robots/ur3.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/robots/ur3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/symbols.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/symbols.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/trajectory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/trajectory/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtb_toolbox/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rtb_toolbox/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +50,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "miguellrodrigues"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:miguellrodrigues/rtb_toolbox.git",
+    "accountId": "2d549776-1870-44ca-a17c-1d85dc50b1d4"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -42,24 +76,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/miguel/Documentos/graduation/rtb_toolbox&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Python&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/miguel/PycharmProjects/rtb_toolbox",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="rtb_toolbox" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -80,6 +117,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="UnknownFeatures">
